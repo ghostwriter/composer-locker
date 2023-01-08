@@ -16,9 +16,7 @@ final class ProcessRunner
 
     public function run(array $command, ?string $cwd = null): string
     {
-        $this->symfonyStyle->note(
-            sprintf('Running command: "%s"', implode(' ', $command))
-        );
+        $this->symfonyStyle->note(sprintf('Running command: "%s"', implode(' ', $command)));
 
         return $this->createProcess($command, $cwd ?? getcwd())
             ->mustRun()
