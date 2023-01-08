@@ -11,8 +11,8 @@ trait WorkerTrait
     public function description(Lock $lock): string
     {
         return sprintf(
-            'Running %s on "%s" branch; in "%s".',
-            basename(self::class),
+            'Running [%s] on [%s] branch; in [%s].',
+            substr(strrchr(self::class, '\\'),1),
             $lock->getBranch(),
             $lock->getCurrentWorkingDirectory()
         );
