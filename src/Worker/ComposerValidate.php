@@ -16,8 +16,8 @@ final class ComposerValidate implements Worker
     use WorkerTrait;
 
     public function __construct(
-        private ProcessRunner $processRunner,
-        private SymfonyStyle $symfonyStyle,
+        private readonly ProcessRunner $processRunner,
+        private readonly SymfonyStyle $symfonyStyle,
     ) {
     }
 
