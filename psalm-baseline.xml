@@ -1,2 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863"/>
+<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
+  <file src="src/Event/ComposerBump.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/ComposerTest.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/ComposerUpdate.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/ComposerValidate.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitCheckoutBranch.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitCheckoutNewBranch.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitCommit.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitHubCliCreatePullRequest.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitHubCliMergePullRequest.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitPush.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/GitStatus.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Event/Lock.php">
+    <MissingTemplateParam occurrences="1">
+      <code>EventInterface</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Listener/GitPushListener.php">
+    <TypeDoesNotContainType occurrences="1">
+      <code>false</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/Process/ProcessRunner.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$command</code>
+    </MixedArgumentTypeCoercion>
+  </file>
+</files>
