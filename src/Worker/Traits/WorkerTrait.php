@@ -12,7 +12,7 @@ trait WorkerTrait
     {
         return sprintf(
             'Running [%s] on [%s] branch; in [%s].',
-            substr(strrchr(self::class, '\\'),1),
+            mb_substr(mb_strrchr(self::class, '\\'), 1),
             $lock->getBranch(),
             $lock->getCurrentWorkingDirectory()
         );
