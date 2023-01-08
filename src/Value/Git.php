@@ -28,4 +28,5 @@ final class Git
     public const PUSH = ['git', 'push', '--force-with-lease'];
 
     public const TARGET_BRANCH = 'main';
+    public const SIGNATURE = 'Signed-off-by: Nathanael Esayeas <nathanael.esayeas@protonmail.com>';
 }

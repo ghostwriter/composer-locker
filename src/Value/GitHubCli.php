@@ -14,8 +14,12 @@ final class GitHubCli
         Git::FEATURE_BRANCH,
         '--base',
         Git::TARGET_BRANCH,
+        '--body',
+        Git::SIGNATURE,
+        '--title',
+        Git::COMMIT_MESSAGE,
         '--fill',
     ];
 
-    public const MERGE_PULL_REQUEST = ['gh', 'pr', 'merge', '--merge', '--delete-branch'];
+    public const MERGE_PULL_REQUEST = ['gh', 'pr', 'merge', '--merge', '--delete-branch','--body', Git::COMMIT_MESSAGE];
 }
