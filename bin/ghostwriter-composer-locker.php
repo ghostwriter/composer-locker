@@ -7,6 +7,7 @@ namespace Ghostwriter\ComposerLocker;
 
 use Ghostwriter\ComposerLocker\Event\Lock;
 use Ghostwriter\ComposerLocker\Listener\Dump;
+use Ghostwriter\ComposerLocker\Value\Git;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Contract\ContainerInterface;
 use Ghostwriter\EventDispatcher\Contract\DispatcherInterface;
@@ -97,7 +98,7 @@ use function sprintf;
         ->setName('ghostwriter/composer-locker - #BlackLivesMatter✊🏾')
         ->setVersion('1.0.0')
         ->setDescription('Update composer.json and composer.lock files, then commit changes if tests pass.')
-        ->addArgument('branch', InputArgument::OPTIONAL, 'Branch to work on.', 'main')
+        ->addArgument('branch', InputArgument::OPTIONAL, 'Branch to work on.', Git::TARGET_BRANCH)
         ->addOption(
             'path',
             'p',
