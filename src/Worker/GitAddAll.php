@@ -23,6 +23,6 @@ final class GitAddAll implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Git::ADD_ALL));
+        $this->symfonyStyle->success($this->processRunner->run(Git::ADD_ALL, $lock->getCurrentWorkingDirectory()));
     }
 }
