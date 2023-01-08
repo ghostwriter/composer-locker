@@ -23,6 +23,8 @@ final class GitHubCliCreatePullRequest implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(GitHubCli::CREATE_PULL_REQUEST));
+        $this->symfonyStyle->success(
+            $this->processRunner->run(GitHubCli::CREATE_PULL_REQUEST, $lock->getCurrentWorkingDirectory())
+        );
     }
 }
