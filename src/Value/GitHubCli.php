@@ -21,5 +21,13 @@ final class GitHubCli
         '--fill',
     ];
 
-    public const MERGE_PULL_REQUEST = ['gh', 'pr', 'merge', '--merge', '--delete-branch', '--body', Git::COMMIT_MESSAGE];
+    public const MERGE_PULL_REQUEST = [
+        'gh',
+        'pr',
+        'merge',
+        '--merge',
+        '--delete-branch',
+        '--body',
+        Git::COMMIT_MESSAGE,
+    ];
 }
