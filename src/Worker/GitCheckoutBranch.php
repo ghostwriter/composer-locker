@@ -23,6 +23,8 @@ final class GitCheckoutBranch implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Git::CHECKOUT_BRANCH));
+        $this->symfonyStyle->success(
+            $this->processRunner->run(Git::CHECKOUT_BRANCH, $lock->getCurrentWorkingDirectory())
+        );
     }
 }
