@@ -4,62 +4,60 @@ declare(strict_types=1);
 
 namespace Ghostwriter\ComposerLocker\Listener;
 
-use Ghostwriter\ComposerLocker\Event\ComposerBump;
-use Ghostwriter\ComposerLocker\Event\ComposerTest;
-use Ghostwriter\ComposerLocker\Event\ComposerUpdate;
-use Ghostwriter\ComposerLocker\Event\ComposerValidate;
-use Ghostwriter\ComposerLocker\Event\GitCheckoutNewBranch;
-use Ghostwriter\ComposerLocker\Event\GitCommit;
-use Ghostwriter\ComposerLocker\Event\GitHubCliCreatePullRequest;
-use Ghostwriter\ComposerLocker\Event\GitHubCliMergePullRequest;
-use Ghostwriter\ComposerLocker\Event\GitPush;
-use Ghostwriter\ComposerLocker\Event\GitStatus;
+use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
+use Ghostwriter\ComposerLocker\Worker\ComposerUpdate;
+use Ghostwriter\ComposerLocker\Worker\ComposerValidate;
+use Ghostwriter\ComposerLocker\Worker\GitCheckoutNewBranch;
+use Ghostwriter\ComposerLocker\Worker\GitCommit;
+use Ghostwriter\ComposerLocker\Worker\GitHubCliCreatePullRequest;
+use Ghostwriter\ComposerLocker\Worker\GitHubCliMergePullRequest;
+use Ghostwriter\ComposerLocker\Worker\GitStatus;
+use Ghostwriter\ComposerLocker\Worker\PHPUnit;
 use Ghostwriter\Container\Container;
-use Ghostwriter\EventDispatcher\Contract\EventInterface;
-use Ghostwriter\EventDispatcher\Dispatcher;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class LockListener
 {
     /**
-     * @var class-string<EventInterface>[]
+     * @var array<class-string<Worker>>
      */
     private array $tasks = [
         GitStatus::class,
         GitCheckoutNewBranch::class,
-        ComposerTest::class,
+        PHPUnit::class,
         ComposerUpdate::class,
-        ComposerBump::class,
         ComposerValidate::class,
-        ComposerTest::class,
-        //        GitStatus::class,
+        PHPUnit::class,
+        GitStatus::class, // this will stop the rest of the tasks from running if no update found.
         GitCommit::class,
-        GitPush::class,
         GitHubCliCreatePullRequest::class,
         GitHubCliMergePullRequest::class,
+        PHPUnit::class,
     ];
 
     public function __construct(
-        private Container $container,
-        private Dispatcher $dispatcher,
-        private SymfonyStyle $symfonyStyle
+        private readonly Container $container,
+        private readonly SymfonyStyle $symfonyStyle
     ) {
     }
 
-    public function __invoke(Lock $event): void
+    public function __invoke(Lock $lock): void
     {
         $this->symfonyStyle->warning(
             sprintf(
                 'Locking "%s" branch in "%s" directory.',
-                $event->getBranch(),
-                $event->getCurrentWorkingDirectory(),
+                $lock->getBranch(),
+                $lock->getCurrentWorkingDirectory(),
             )
         );
+
         array_map(
-            fn (string $task): EventInterface
-            => $this->dispatcher->dispatch($this->container->build($task)),
+            fn (string $task): mixed
+            =>  $this->symfonyStyle->info($this->container->get($task)->description($lock)),
             $this->tasks
         );
+
+        array_map(fn (string $task): mixed => $this->container->get($task)->work($lock), $this->tasks);
     }
 }
