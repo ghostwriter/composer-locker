@@ -1,11 +1,11 @@
 {
-    "name": "ghostwriter/wip",
-    "description": "Here be dragons",
+    "name": "ghostwriter/composer-locker",
+    "description": "Automated composer.json & composer.lock file maintenance",
     "license": "BSD-3-Clause",
     "type": "library",
     "keywords": [
         "ghostwriter",
-        "wip"
+        "composer-locker"
     ],
     "authors": [
         {
@@ -15,13 +15,13 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/ghostwriter/wip",
+    "homepage": "https://github.com/ghostwriter/composer-locker",
     "support": {
-        "issues": "https://github.com/ghostwriter/wip/issues",
-        "forum": "https://github.com/ghostwriter/wip/discussions",
-        "source": "https://github.com/ghostwriter/wip",
-        "docs": "https://github.com/ghostwriter/wip",
-        "rss": "https://github.com/ghostwriter/wip/releases.atom"
+        "issues": "https://github.com/ghostwriter/composer-locker/issues",
+        "forum": "https://github.com/ghostwriter/composer-locker/discussions",
+        "source": "https://github.com/ghostwriter/composer-locker",
+        "docs": "https://github.com/ghostwriter/composer-locker",
+        "rss": "https://github.com/ghostwriter/composer-locker/releases.atom"
     },
     "funding": [
         {
@@ -38,14 +38,11 @@
         "ghostwriter/json": "^1.0.1",
         "ghostwriter/option": "^1.2",
         "ghostwriter/result": "^1.0.1"
+        "symfony/console": "^6.2.3",
+        "symfony/finder": "^6.2.3"
     },
     "require-dev": {
         "ghostwriter/coding-standard": "dev-main",
-        "infection/infection": "^0.26",
-        "nikic/php-parser": "^4.15",
-        "phpunit/phpunit": "^9.5",
-        "psalm/plugin-phpunit": "^0.18",
-        "rector/rector": "^0.15",
         "vimeo/psalm": "^5.4"
     },
     "replace": {},
@@ -53,21 +50,17 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Ghostwriter\\wip\\": "src/"
-        },
-        "files": [
-            "src/constants.php",
-            "src/functions.php"
-        ]
+            "Ghostwriter\\ComposerLocker\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ghostwriter\\wip\\Tests\\": "tests/"
+            "Ghostwriter\\ComposerLocker\\Tests\\": "tests/"
         }
     },
     "bin": [
-        "bin/my-other-script",
-        "bin/my-script"
+        "bin/ghostwriter-composer-locker",
+        "bin/ghostwriter-composer-locker.php"
     ],
     "config": {
         "allow-plugins": {
