@@ -8,7 +8,6 @@ use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
 use Ghostwriter\ComposerLocker\Process\ProcessRunner;
 use Ghostwriter\ComposerLocker\Value\Git;
-use Ghostwriter\ComposerLocker\Value\GitHubCli;
 use Ghostwriter\ComposerLocker\Worker\Traits\WorkerTrait;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -24,6 +23,6 @@ final class GitCommit implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Git::COMMIT));
+        $this->symfonyStyle->success($this->processRunner->run(Git::COMMIT, $lock->getCurrentWorkingDirectory()));
     }
 }
