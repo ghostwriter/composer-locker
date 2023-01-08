@@ -115,7 +115,7 @@ use function sprintf;
                         Lock::class,
                         [
                             'branch' => $input->getArgument('branch'),
-                            'cwd' => $input->getOption('path')
+                            'cwd' => $input->getOption('path'),
                         ]
                     )
                 )
