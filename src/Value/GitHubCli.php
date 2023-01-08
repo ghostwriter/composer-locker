@@ -16,5 +16,6 @@ final class GitHubCli
         Git::TARGET_BRANCH,
         '--fill',
     ];
+
     public const MERGE_PULL_REQUEST = ['gh', 'pr', 'merge', '--merge', '--delete-branch'];
 }
