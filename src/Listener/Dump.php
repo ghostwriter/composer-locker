@@ -20,6 +20,7 @@ final class Dump
         $this->symfonyStyle->section('[DEBUG]: ' . $event::class);
         if ($event instanceof ErrorEventInterface) {
             $this->symfonyStyle->error('Error: ' . $event->getThrowable()->getMessage());
+            $this->symfonyStyle->error('Trace: ' . $event->getThrowable()->getTraceAsString());
             die;
         }
     }
