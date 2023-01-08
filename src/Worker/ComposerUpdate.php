@@ -23,6 +23,6 @@ final class ComposerUpdate implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Composer::UPDATE));
+        $this->symfonyStyle->success($this->processRunner->run(Composer::UPDATE, $lock->getCurrentWorkingDirectory()));
     }
 }
