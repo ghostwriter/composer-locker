@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\wip\Tests\Unit;
+namespace Ghostwriter\ComposerLocker\Tests\Unit;
 
-use Ghostwriter\wip\Foo;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Ghostwriter\wip\Foo
+ * @coversNothing
  *
  * @internal
  *
@@ -16,9 +15,9 @@ use PHPUnit\Framework\TestCase;
  */
 final class FooTest extends TestCase
 {
-    /** @covers \Ghostwriter\wip\Foo::test */
-    public function test(): void
+    /** @coversNothing */
+    public function testNothing(): void
     {
-        self::assertTrue((new Foo())->test());
+        self::assertTrue(true);
     }
 }
