@@ -24,6 +24,6 @@ final class GitStatus implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(self::COMMAND));
+        $this->symfonyStyle->success($this->processRunner->run(self::COMMAND, $lock->getCurrentWorkingDirectory()));
     }
 }
