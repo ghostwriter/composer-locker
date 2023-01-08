@@ -21,7 +21,7 @@ final class Git
         self::COMMIT_MESSAGE,
     ];
 
-    public const COMMIT_MESSAGE = 'Bump composer dependencies';
+    public const COMMIT_MESSAGE = 'Lock file maintenance';
 
     public const FEATURE_BRANCH = 'chore/composer-locker';
 
