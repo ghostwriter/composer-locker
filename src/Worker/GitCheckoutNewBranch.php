@@ -23,6 +23,8 @@ final class GitCheckoutNewBranch implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Git::CHECKOUT_NEW_BRANCH));
+        $this->symfonyStyle->success(
+            $this->processRunner->run(Git::CHECKOUT_NEW_BRANCH, $lock->getCurrentWorkingDirectory())
+        );
     }
 }
