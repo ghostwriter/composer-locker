@@ -23,10 +23,7 @@ final class LockTest extends TestCase
      */
     public function testConstruct(): void
     {
-        $lock = new Lock(
-            'branch',
-            'path',
-        );
+        $lock = new Lock('branch', 'path');
         self::assertSame('branch', $lock->getBranch());
         self::assertSame('path', $lock->getCurrentWorkingDirectory());
     }
