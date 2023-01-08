@@ -25,5 +25,7 @@ final class Git
 
     public const FEATURE_BRANCH = 'chore/composer-locker';
 
+    public const PUSH = ['git', 'push', '--force-with-lease'];
+
     public const TARGET_BRANCH = 'main';
 }
