@@ -20,6 +20,8 @@ trait WorkerTrait
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(['echo', self::class]));
+        $this->symfonyStyle->success(
+            $this->processRunner->run(['echo', self::class], $lock->getCurrentWorkingDirectory())
+        );
     }
 }
