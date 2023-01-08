@@ -17,4 +17,9 @@ trait WorkerTrait
             $lock->getCurrentWorkingDirectory()
         );
     }
+
+    public function work(Lock $lock): void
+    {
+        $this->symfonyStyle->success($this->processRunner->run(['echo', self::class]));
+    }
 }
