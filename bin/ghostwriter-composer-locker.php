@@ -110,7 +110,15 @@ use function sprintf;
                 InputInterface $input,
                 OutputInterface $output
             ): int => $container->get(Dispatcher::class)
-                ->dispatch(new Lock($input->getArgument('branch'), $input->getOption('path')))
+                ->dispatch(
+                    $container->build(
+                        Lock::class,
+                        [
+                            'branch' => $input->getArgument('branch'),
+                            'cwd' => $input->getOption('path')
+                        ]
+                    )
+                )
                 ->isPropagationStopped() ?
                 Command::FAILURE :
                 Command::SUCCESS
