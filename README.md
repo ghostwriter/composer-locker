@@ -1,30 +1,30 @@
-# wip
+# Composer Locker
 
-[![Compliance](https://github.com/ghostwriter/wip/actions/workflows/compliance.yml/badge.svg)](https://github.com/ghostwriter/wip/actions/workflows/compliance.yml)
-[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/wip?color=8892bf)](https://www.php.net/supported-versions)
-[![Type Coverage](https://shepherd.dev/github/ghostwriter/wip/coverage.svg)](https://shepherd.dev/github/ghostwriter/wip)
-[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/wip)](https://packagist.org/packages/ghostwriter/wip)
-[![Downloads](https://badgen.net/packagist/dt/ghostwriter/wip?color=blue)](https://packagist.org/packages/ghostwriter/wip)
+[![Compliance](https://github.com/ghostwriter/composer-locker/actions/workflows/compliance.yml/badge.svg)](https://github.com/ghostwriter/composer-locker/actions/workflows/compliance.yml)
+[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/composer-locker?color=8892bf)](https://www.php.net/supported-versions)
+[![Type Coverage](https://shepherd.dev/github/ghostwriter/composer-locker/coverage.svg)](https://shepherd.dev/github/ghostwriter/composer-locker)
+[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/composer-locker)](https://packagist.org/packages/ghostwriter/composer-locker)
+[![Downloads](https://badgen.net/packagist/dt/ghostwriter/composer-locker?color=blue)](https://packagist.org/packages/ghostwriter/composer-locker)
 
-work in progress
-
-> **Warning**
->
-> This project is not finished yet, work in progress.
-
+Automatically `update`, `test`, `commit` and `push` your `composer.json` & `composer.lock` files.
 
 ## Installation
 
 You can install the package via composer:
 
 ``` bash
-composer require ghostwriter/wip
+composer require ghostwriter/composer-locker --dev
 ```
+
+### Requirements
+
+- [`git`](https://git-scm.com/)
+- [`gh`](https://cli.github.com/)
 
 ## Usage
 
-```php
-// work in progress
+```bash
+/vendor/bin/ghostwriter-composer-locker
 ```
 
 ## Testing
@@ -48,7 +48,7 @@ If you discover any security related issues, please email `nathanael.esayeas@pro
 ## Credits
 
 - [Nathanael Esayeas](https://github.com/ghostwriter)
-- [All Contributors](https://github.com/ghostwriter/wip/contributors)
+- [All Contributors](https://github.com/ghostwriter/composer-locker/contributors)
 
 ## License
 
