@@ -8,6 +8,7 @@ use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
 use Ghostwriter\ComposerLocker\Worker\ComposerUpdate;
 use Ghostwriter\ComposerLocker\Worker\ComposerValidate;
+use Ghostwriter\ComposerLocker\Worker\GitAddAll;
 use Ghostwriter\ComposerLocker\Worker\GitCheckoutNewBranch;
 use Ghostwriter\ComposerLocker\Worker\GitCommit;
 use Ghostwriter\ComposerLocker\Worker\GitHubCliCreatePullRequest;
@@ -26,10 +27,11 @@ final class LockListener
         GitStatus::class,
         GitCheckoutNewBranch::class,
         PHPUnit::class,
-        ComposerUpdate::class,
         ComposerValidate::class,
+        ComposerUpdate::class,
         PHPUnit::class,
         GitStatus::class, // this will stop the rest of the tasks from running if no update found.
+        GitAddAll::class,
         GitCommit::class,
         GitHubCliCreatePullRequest::class,
         GitHubCliMergePullRequest::class,
