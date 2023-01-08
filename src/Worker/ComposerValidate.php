@@ -23,6 +23,8 @@ final class ComposerValidate implements Worker
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->success($this->processRunner->run(Composer::VALIDATE));
+        $this->symfonyStyle->success(
+            $this->processRunner->run(Composer::VALIDATE, $lock->getCurrentWorkingDirectory())
+        );
     }
 }
