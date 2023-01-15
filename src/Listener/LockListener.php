@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ghostwriter\ComposerLocker\Listener;
 
+use Ghostwriter\Collection\Collection;
 use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
 use Ghostwriter\ComposerLocker\Worker\ComposerUpdate;
@@ -24,7 +25,7 @@ final class LockListener
     /**
      * @var array<class-string<Worker>>
      */
-    private array $tasks = [
+    private const TASKS = [
         GitStatus::class,
         GitCheckoutNewBranch::class,
         PHPUnit::class,
@@ -56,12 +57,16 @@ final class LockListener
             )
         );
 
-        array_map(
-            fn (string $task): mixed
-            =>  $this->symfonyStyle->info($this->container->get($task)->description($lock)),
-            $this->tasks
-        );
+        Collection::fromIterable(self::TASKS)
+            ->map(function (mixed $task) use ($lock): string {
+                /** @var class-string<Worker> $task */
+                $worker = $this->container->get($task);
 
-        array_map(fn (string $task): mixed => $this->container->get($task)->work($lock), $this->tasks);
+                $this->symfonyStyle->info($worker->description($lock));
+
+                $worker->work($lock);
+
+                return $task;
+            });
     }
 }
