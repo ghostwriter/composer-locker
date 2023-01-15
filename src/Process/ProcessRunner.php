@@ -6,6 +6,7 @@ namespace Ghostwriter\ComposerLocker\Process;
 
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Process;
+use function trim;
 
 final class ProcessRunner
 {
@@ -14,13 +15,14 @@ final class ProcessRunner
     ) {
     }
 
+    /**
+     * @param array<string> $command
+     */
     public function run(array $command, ?string $cwd = null): string
     {
         $this->symfonyStyle->note(sprintf('Running command: "%s"', implode(' ', $command)));
 
-        return $this->createProcess($command, $cwd ?? getcwd())
-            ->mustRun()
-            ->getOutput();
+        return trim($this->createProcess($command, $cwd ?? getcwd())->mustRun()->getOutput());
     }
 
     private function createProcess(array $command, string $cwd): Process
