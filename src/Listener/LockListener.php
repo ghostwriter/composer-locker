@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ghostwriter\ComposerLocker\Listener;
 
-use Ghostwriter\Collection\Collection;
 use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
 use Ghostwriter\ComposerLocker\Worker\ComposerUpdate;
@@ -57,16 +56,15 @@ final class LockListener
             )
         );
 
-        Collection::fromIterable(self::TASKS)
-            ->map(function (mixed $task) use ($lock): string {
-                /** @var class-string<Worker> $task */
-                $worker = $this->container->get($task);
+        array_map(function (mixed $task) use ($lock): string {
+            /** @var class-string<Worker> $task */
+            $worker = $this->container->get($task);
 
-                $this->symfonyStyle->info($worker->description($lock));
+            $this->symfonyStyle->info($worker->description($lock));
 
-                $worker->work($lock);
+            $worker->work($lock);
 
-                return $task;
-            });
+            return $task;
+        }, self::TASKS);
     }
 }
