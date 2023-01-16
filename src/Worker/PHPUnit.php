@@ -24,6 +24,13 @@ final class PHPUnit implements Worker
 
     public function work(Lock $lock): void
     {
+        $currentWorkingDirectory = $lock->getCurrentWorkingDirectory();
+        if (! file_exists($currentWorkingDirectory . '/phpunit.xml')) {
+            return;
+        }
+        if (! file_exists($currentWorkingDirectory . '/phpunit.xml.dist')) {
+            return;
+        }
         $this->symfonyStyle->success($this->processRunner->run(self::COMMAND, $lock->getCurrentWorkingDirectory()));
     }
 }
