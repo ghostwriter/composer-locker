@@ -22,7 +22,7 @@ final class ProcessRunner
     {
         $this->symfonyStyle->note(sprintf('Running command: "%s"', implode(' ', $command)));
 
-        return trim($this->createProcess($command, $cwd ?? getcwd())->mustRun()->getOutput());
+        return trim($this->createProcess($command, $cwd ?? getcwd())->setTimeout(null)->mustRun()->getOutput());
     }
 
     private function createProcess(array $command, string $cwd): Process
