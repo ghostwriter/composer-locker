@@ -1,73 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
-  <file src="src/Event/ComposerBump.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
+<files psalm-version="5.9.0@8b9ad1eb9e8b7d3101f949291da2b9f7767cd163">
+  <file src="bin/ghostwriter-composer-locker.php">
+    <ArgumentTypeCoercion>
+      <code>$event</code>
+      <code>$listener</code>
+    </ArgumentTypeCoercion>
+    <InvalidArgument>
+      <code>Dump::class</code>
+    </InvalidArgument>
+    <InvalidCast>
+      <code>EventInterface::class</code>
+    </InvalidCast>
+    <InvalidDocblock>
+      <code>$event</code>
+    </InvalidDocblock>
+    <UnusedClosureParam>
+      <code>$output</code>
+    </UnusedClosureParam>
   </file>
-  <file src="src/Event/ComposerTest.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
+  <file src="src/Listener/Dump.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
   </file>
-  <file src="src/Event/ComposerUpdate.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/ComposerValidate.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitCheckoutBranch.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitCheckoutNewBranch.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitCommit.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitHubCliCreatePullRequest.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitHubCliMergePullRequest.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitPush.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/GitStatus.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Event/Lock.php">
-    <MissingTemplateParam occurrences="1">
-      <code>EventInterface</code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Listener/GitPushListener.php">
-    <TypeDoesNotContainType occurrences="1">
-      <code>false</code>
-    </TypeDoesNotContainType>
+  <file src="src/Listener/LockListener.php">
+    <UnusedClass>
+      <code>LockListener</code>
+    </UnusedClass>
   </file>
   <file src="src/Process/ProcessRunner.php">
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>$command</code>
-    </MixedArgumentTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/ComposerUpdate.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/ComposerValidate.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitAddAll.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitCheckoutNewBranch.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitCommit.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitHubCliCreatePullRequest.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitHubCliMergePullRequest.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitPush.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/GitStatus.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Worker/PHPUnit.php">
+    <PossiblyUnusedMethod>
+      <code>__construct</code>
+    </PossiblyUnusedMethod>
   </file>
 </files>
