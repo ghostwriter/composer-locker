@@ -33,7 +33,7 @@ trait WorkerTrait
 
     public function work(Lock $lock): void
     {
-        $this->symfonyStyle->info($this->description($lock));
+        $this->symfonyStyle->warning($this->description($lock));
 
         $this->symfonyStyle->success(
             $this->processRunner->run($this->command(), $lock->getCurrentWorkingDirectory())
