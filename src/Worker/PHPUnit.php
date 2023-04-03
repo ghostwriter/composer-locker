@@ -6,31 +6,33 @@ namespace Ghostwriter\ComposerLocker\Worker;
 
 use Ghostwriter\ComposerLocker\Contract\Worker;
 use Ghostwriter\ComposerLocker\Event\Lock;
-use Ghostwriter\ComposerLocker\Process\ProcessRunner;
 use Ghostwriter\ComposerLocker\Worker\Traits\WorkerTrait;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class PHPUnit implements Worker
 {
-    use WorkerTrait;
+    use WorkerTrait {
+        work as protected traitWork;
+    }
 
     private const COMMAND = ['phpunit', '--colors=always', '--testdox', '--stop-on-failure'];
 
-    public function __construct(
-        private readonly ProcessRunner $processRunner,
-        private readonly SymfonyStyle $symfonyStyle,
-    ) {
+    public function command(): array
+    {
+        return self::COMMAND;
     }
 
     public function work(Lock $lock): void
     {
         $currentWorkingDirectory = $lock->getCurrentWorkingDirectory();
+
         if (! file_exists($currentWorkingDirectory . '/phpunit.xml')) {
             return;
         }
+
         if (! file_exists($currentWorkingDirectory . '/phpunit.xml.dist')) {
             return;
         }
-        $this->symfonyStyle->success($this->processRunner->run(self::COMMAND, $lock->getCurrentWorkingDirectory()));
+
+        $this->traitWork($lock);
     }
 }
