@@ -48,7 +48,7 @@ use function sprintf;
     $container = Container::getInstance();
 
     $container->bind(ListenerProvider::class);
-    $container->alias(ListenerProvider::class, ListenerProviderInterface::class);
+    $container->alias(ListenerProviderInterface::class, ListenerProvider::class);
     $container->set(
         Dispatcher::class,
         static fn (ContainerInterface $container): Dispatcher => $container->build(
@@ -58,38 +58,40 @@ use function sprintf;
             ]
         )
     );
-    $container->alias(Dispatcher::class, DispatcherInterface::class);
+    $container->alias(DispatcherInterface::class, Dispatcher::class);
 
     // Input
     $container->bind(ArgvInput::class);
     $container->bind(ArrayInput::class);
     $container->bind(StringInput::class);
-    $container->alias(ArgvInput::class, Input::class);
-    $container->alias(Input::class, InputInterface::class);
+    $container->alias(Input::class, ArgvInput::class);
+    $container->alias(InputInterface::class, Input::class);
     // Output
     $container->bind(ConsoleOutput::class);
     $container->bind(NullOutput::class);
     $container->bind(SymfonyStyle::class);
-    $container->alias(ConsoleOutput::class, Output::class);
-    $container->alias(Output::class, OutputInterface::class);
+    $container->alias(Output::class, ConsoleOutput::class);
+    $container->alias(OutputInterface::class, Output::class);
 
     $container->extend(
         ListenerProvider::class,
-        static function (ContainerInterface $container, object $listenerProvider): ListenerProvider {
-            /** @var ListenerProvider $listenerProvider */
-            $listenerProvider->addListener($container->get(Dump::class), 0, EventInterface::class);
+        static function (ContainerInterface $container, ListenerProvider $listenerProvider): ListenerProvider {
+            $listenerProvider->bindListener(EventInterface::class, Dump::class);
 
-            /** @var ListenerProvider $listenerProvider */
             foreach ($container->build(Finder::class)
                 ->files()
                 ->in(dirname(__DIR__) . '/src/Listener/')
                 ->name('*Listener.php')
                 ->sortByName()
                 ->getIterator() as $splFileInfo) {
+                /** @var class-string<\Ghostwriter\EventDispatcher\Contract\EventInterface<bool> $event */
                 $event = sprintf('%s\Event\%s', __NAMESPACE__, $splFileInfo->getBasename('Listener.php'));
+
+                /** @var class-string $listener */
                 $listener =  sprintf("%s\Listener\%s", __NAMESPACE__, $splFileInfo->getBasename('.php'));
                 $listenerProvider->bindListener($event, $listener);
             }
+
             return $listenerProvider;
         }
     );
