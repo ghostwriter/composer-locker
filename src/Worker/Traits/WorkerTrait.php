@@ -5,9 +5,22 @@ declare(strict_types=1);
 namespace Ghostwriter\ComposerLocker\Worker\Traits;
 
 use Ghostwriter\ComposerLocker\Event\Lock;
+use Ghostwriter\ComposerLocker\Process\ProcessRunner;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 trait WorkerTrait
 {
+    public function __construct(
+        private readonly ProcessRunner $processRunner,
+        private readonly SymfonyStyle $symfonyStyle,
+    ) {
+    }
+
+    public function command(): array
+    {
+        return ['echo', self::class];
+    }
+
     public function description(Lock $lock): string
     {
         return sprintf(
@@ -20,8 +33,10 @@ trait WorkerTrait
 
     public function work(Lock $lock): void
     {
+        $this->symfonyStyle->info($this->description($lock));
+
         $this->symfonyStyle->success(
-            $this->processRunner->run(['echo', self::class], $lock->getCurrentWorkingDirectory())
+            $this->processRunner->run($this->command(), $lock->getCurrentWorkingDirectory())
         );
     }
 }
