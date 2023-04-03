@@ -60,8 +60,6 @@ final class LockListener
             /** @var class-string<Worker> $task */
             $worker = $this->container->get($task);
 
-            $this->symfonyStyle->info($worker->description($lock));
-
             $worker->work($lock);
 
             return $task;
