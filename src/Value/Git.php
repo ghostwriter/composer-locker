@@ -29,5 +29,7 @@ final class Git
 
     public const SIGNATURE = 'Signed-off-by: Nathanael Esayeas <nathanael.esayeas@protonmail.com>';
 
+    public const STATUS = ['git', 'status', '-s'];
+
     public const TARGET_BRANCH = 'main';
 }
