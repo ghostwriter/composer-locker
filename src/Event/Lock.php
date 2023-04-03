@@ -7,6 +7,7 @@ namespace Ghostwriter\ComposerLocker\Event;
 use Ghostwriter\EventDispatcher\Contract\EventInterface;
 use Ghostwriter\EventDispatcher\Traits\EventTrait;
 
+/** @implements EventInterface<false> */
 final class Lock implements EventInterface
 {
     use EventTrait;
