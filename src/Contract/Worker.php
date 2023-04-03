@@ -8,6 +8,8 @@ use Ghostwriter\ComposerLocker\Event\Lock;
 
 interface Worker
 {
+    public function command(): array;
+
     public function description(Lock $lock): string;
 
     public function work(Lock $lock): void;
