@@ -33,53 +33,20 @@
       <code>__construct</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Worker/ComposerUpdate.php">
+  <file src="src/Worker/Traits/WorkerTrait.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$this->command()]]></code>
+    </MixedArgumentTypeCoercion>
     <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/ComposerValidate.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitAddAll.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitCheckoutNewBranch.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitCommit.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitHubCliCreatePullRequest.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitHubCliMergePullRequest.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitPush.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/GitStatus.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Worker/PHPUnit.php">
-    <PossiblyUnusedMethod>
       <code>__construct</code>
     </PossiblyUnusedMethod>
   </file>
