@@ -16,6 +16,8 @@ use Ghostwriter\EventDispatcher\Contract\ListenerProviderInterface;
 use Ghostwriter\EventDispatcher\Dispatcher;
 use Ghostwriter\EventDispatcher\ListenerProvider;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Formatter\OutputFormatter;
+use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\Input;
@@ -72,6 +74,7 @@ use function sprintf;
     $container->bind(SymfonyStyle::class);
     $container->alias(Output::class, ConsoleOutput::class);
     $container->alias(OutputInterface::class, Output::class);
+    $container->alias(OutputFormatterInterface::class, OutputFormatter::class);
 
     $container->extend(
         ListenerProvider::class,
